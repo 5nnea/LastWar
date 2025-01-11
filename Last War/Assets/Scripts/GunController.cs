@@ -20,7 +20,10 @@ public class GunController : MonoBehaviour
     }
 
     void CreatBullet(){
-        //bullet을 spawner위치에서 복제하고 bullets의 자식으로 넣기
-        Instantiate(bullet, spawner.transform.position, bullet.transform.rotation).transform.parent = bullets.transform;
+        //gameStart변수값이 true라면 실행
+        if(transform.root.gameObject.GetComponent<PlayerController>().gameManager.gameStart == true){
+            //bullet을 spawner위치에서 복제하고 bullets의 자식으로 넣기
+            Instantiate(bullet, spawner.transform.position, bullet.transform.rotation).transform.parent = bullets.transform;
+        }
     }
 }

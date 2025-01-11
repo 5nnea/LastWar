@@ -10,13 +10,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject trigs; //복제할 트리그모음 프리팹
     [SerializeField] Material goodTrig; //+,* 트리그에 색깔
     [SerializeField] Material badTrig;  //- 트리그에 색깔
+    [SerializeField] GameObject canvas;
 
     [Header("할당 X")]
     public int waves = 0; //게임 웨이브
+    public bool gameStart = false;
 
+    Quaternion targetRotation = Quaternion.Euler(40, 0, 0);
 
-    void Start(){
+    void Update(){
+        //게임시작되면 카메라 회전
+        if(gameStart == true){
+            Camera.main.transform.position =
+            Vector3.MoveTowards(Camera.main.transform.position, new Vector3(0,6,-11.5f), 6f * Time.deltaTime);
+            Camera.main.transform.rotation = 
+            Quaternion.RotateTowards(Camera.main.transform.rotation,targetRotation,55f * Time.deltaTime);
+            }
+    }
+    
+
+    //canvas에 있는 Start버튼을 클릭했을 때 실행
+    public void StartBtnClick(){
+        Destroy(canvas);
         InvokeRepeating("CreatTrig",1f,10f); //1초가 지난뒤 10초마다 CreatTrig함수 실행
+        gameStart = true; //게임 시작!
     }
 
     void CreatTrig(){

@@ -13,8 +13,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float h = Input.GetAxis("Horizontal"); //a,d 입력감지
-        transform.Translate(Vector3.right * playerSpeed * h *Time.deltaTime); //왼쪽, 오른쪽으로 이동
+        //gameStart가 true라면 실행
+        if(gameManager.gameStart == true){
+            float h = Input.GetAxis("Horizontal"); //a,d 입력감지
+            transform.Translate(Vector3.right * playerSpeed * h *Time.deltaTime); //왼쪽, 오른쪽으로 이동
+        }
     }
 
     //콜라이더 충돌시 실행
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour
             isTrigging = true;
             float currentPositionX = transform.position.x;
             int currentWaves = gameManager.waves-1; 
-            
+
             //플레이어의 위치로 왼쪽 트리그, 오른쪽 트리그 판명
             //콜라이더로 계산하면 겹쳤을 때 문제가 귀찮기도 하고 이건 2개밖에 없어서 이런식으로 해도됨.
             if(currentPositionX < 0){
