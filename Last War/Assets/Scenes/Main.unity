@@ -566,19 +566,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigDatas:
   - sign1: +
-    num1: 9
-    sign2: +
-    num2: 14
-  - sign1: '*'
     num1: 3
     sign2: +
-    num2: 7
+    num2: 1
+  - sign1: '*'
+    num1: 3
+    sign2: '*'
+    num2: 2
   - sign1: '-'
+    num1: 4
+    sign2: +
+    num2: 1
+  - sign1: '*'
     num1: 2
     sign2: '-'
-    num2: 1
+    num2: 2
+  - sign1: '-'
+    num1: 3
+    sign2: '-'
+    num2: 7
   waves: 0
   trigs: {fileID: 5207463771537254816, guid: 0c911b851fb93c845a3cf288f9e10510, type: 3}
+  goodTrig: {fileID: 2100000, guid: 44b757b22c926e348800e57f4a828f6c, type: 2}
+  badTrig: {fileID: 2100000, guid: 45409631d89d99643843f11a01b8b19f, type: 2}
 --- !u!4 &1344778124
 Transform:
   m_ObjectHideFlags: 0

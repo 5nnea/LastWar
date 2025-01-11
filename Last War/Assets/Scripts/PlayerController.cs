@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 5;
-    public int playerCount = 1;
     public GameManager gameManager;
-    public bool isTrigging = false;
+    //복제할 플레이어자식 프리팹
     public GameObject playerChild;
+    public GameObject bullets;
+
+    private float speed = 6;
+    private int playerCount = 1;
+    private bool isTrigging = false;
 
     private float childNomalPosition = 0.8f;
 
@@ -71,21 +74,7 @@ public class PlayerController : MonoBehaviour
             Destroy(transform.GetChild(i).gameObject);
         }
         Vector3 childPosition;
-        // for(int i = 1; i<=playerCount; i++){
-        //     childPosition = transform.position;
-        //     if (i % 2 == 0) {
-        //         childPosition.x = childNomalPosition * (i/2) + childPosition.x; 
-        //     }
-        //     else if (i > 1) {
-        //         childPosition.x = -childNomalPosition * (i-1)/2 + childPosition.x; 
-        //     }
-        //     else{
-        //         continue;
-        //     }
-        //     Instantiate(playerChild,childPosition, playerChild.transform.rotation)
-        //     .transform.parent = transform;
-        //     Debug.Log(childPosition.x);
-        // }
+
         int rows = (playerCount / 5 == 0) ? 1 : playerCount/5 + 1;
         int lastRowCount = playerCount % 5;
         for(int i = 0; i< rows; i++){

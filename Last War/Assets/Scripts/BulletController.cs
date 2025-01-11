@@ -5,10 +5,6 @@ public class BulletController : MonoBehaviour
     [SerializeField] float speed = 5;
     
     private float maxZ = 20;
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
