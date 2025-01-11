@@ -4,7 +4,7 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] float speed = 5;
     
-    private float maxZ = 8;
+    private float maxZ = 20;
     void Start()
     {
 

@@ -71,20 +71,54 @@ public class PlayerController : MonoBehaviour
             Destroy(transform.GetChild(i).gameObject);
         }
         Vector3 childPosition;
-        for(int i = 1; i<=playerCount; i++){
-            childPosition = transform.position;
-            if (i % 2 == 0) {
-                childPosition.x = childNomalPosition * (i/2) + childPosition.x; 
+        // for(int i = 1; i<=playerCount; i++){
+        //     childPosition = transform.position;
+        //     if (i % 2 == 0) {
+        //         childPosition.x = childNomalPosition * (i/2) + childPosition.x; 
+        //     }
+        //     else if (i > 1) {
+        //         childPosition.x = -childNomalPosition * (i-1)/2 + childPosition.x; 
+        //     }
+        //     else{
+        //         continue;
+        //     }
+        //     Instantiate(playerChild,childPosition, playerChild.transform.rotation)
+        //     .transform.parent = transform;
+        //     Debug.Log(childPosition.x);
+        // }
+        int rows = (playerCount / 5 == 0) ? 1 : playerCount/5 + 1;
+        int lastRowCount = playerCount % 5;
+        for(int i = 0; i< rows; i++){
+            int InRow = (i+1 == rows) ? lastRowCount : 5;
+            for(int j = 1; j<=InRow; j++){
+                childPosition = transform.position;
+
+                if (i == 0){ 
+                    if (j % 2 == 0){
+                        childPosition.x = childNomalPosition * (j / 2) + childPosition.x; 
+                    } 
+                    else if (j > 1){
+                        childPosition.x = -childNomalPosition * (j - 1) / 2 + childPosition.x; 
+                    } 
+                    else {
+                        continue;
+                    }
+                } 
+                else{
+
+                    if (j % 2 == 0){
+                        childPosition.x = childNomalPosition * (j / 2) + childPosition.x; 
+                    } 
+                    else if (j > 1){
+                        childPosition.x = -childNomalPosition * (j - 1) / 2 + childPosition.x; 
+                    }
+                }
+
+                childPosition.z =  -childNomalPosition * i + childPosition.z;
+                Instantiate(playerChild,childPosition, playerChild.transform.rotation)
+                .transform.parent = transform;
+                Debug.Log(childPosition.x);
             }
-            else if (i > 1) {
-                childPosition.x = -childNomalPosition * (i-1)/2 + childPosition.x; 
-            }
-            else{
-                continue;
-            }
-            Instantiate(playerChild,childPosition, playerChild.transform.rotation)
-            .transform.parent = transform;
-            Debug.Log(childPosition.x);
         }
     }
 }
