@@ -20,17 +20,22 @@ public class GameManager : MonoBehaviour
     public int enemyWaves = 0;
     public bool gameStart = false;
 
-    Quaternion targetRotation = Quaternion.Euler(40, 0, 0);
+    Vector3 basicCameraPosition = new Vector3(2.4f,1.8f,-7.8f);
+    Quaternion basicCameraRotation = Quaternion.Euler(17.5f, -49, 2.63f);
+
+    Quaternion targetRotation = Quaternion.Euler(30.5f, 0, 0);
 
     void Start(){
         canvas.SetActive(true);
+        Camera.main.transform.position = basicCameraPosition;
+        Camera.main.transform.rotation = basicCameraRotation;
     }
 
     void Update(){
         //게임시작되면 카메라 회전
         if(gameStart == true){
             Camera.main.transform.position =
-            Vector3.MoveTowards(Camera.main.transform.position, new Vector3(0,6,-11.5f), 6f * Time.deltaTime);
+            Vector3.MoveTowards(Camera.main.transform.position, new Vector3(0,6.5f,-12.6f), 6f * Time.deltaTime);
             Camera.main.transform.rotation = 
             Quaternion.RotateTowards(Camera.main.transform.rotation,targetRotation,55f * Time.deltaTime);
             }

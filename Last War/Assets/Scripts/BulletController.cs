@@ -4,7 +4,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     private float bulletspeed = 12; //총알속도
-    private float maxZ = 20; //총알의 최대 z값
+    private float maxZ = 50; //총알의 최대 z값
 
     void Update()
     {
