@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private int playerCount = 1; //플레이어 인원수
     private bool isTrigging = false; //트리그에 닿았는지 여부 확인 변수
     private float childNomalPosition = 0.8f; //플레이어자식의 기본 x값
+    private float xRange = 4f;
 
     void Update()
     {
@@ -17,6 +18,13 @@ public class PlayerController : MonoBehaviour
         if(gameManager.gameStart == true){
             float h = Input.GetAxis("Horizontal"); //a,d 입력감지
             transform.Translate(Vector3.right * playerSpeed * h *Time.deltaTime); //왼쪽, 오른쪽으로 이동
+
+            if(transform.position.x < -xRange){
+                transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+            }
+            if(transform.position.x > xRange){
+                transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+            }
         }
     }
 
@@ -66,7 +74,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("게임오버");
             }
 
-            ChangePlayer(); //변화한 플레이어 수에 따라 이쁘게 정렬해주는 함수
+            ChangePlayerCount(); //변화한 플레이어 수에 따라 이쁘게 정렬해주는 함수
         }
     }
 
@@ -77,7 +85,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //이건 수학연산이여서 그냥 코드 복붙해서 주지 않을까 분석하고 싶은 사람만 분석해~
-    void ChangePlayer(){
+    void ChangePlayerCount(){
         for(int i = 1; i < transform.childCount; i++){
             Destroy(transform.GetChild(i).gameObject);
         }

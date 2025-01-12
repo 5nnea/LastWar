@@ -7,16 +7,24 @@ public class GameManager : MonoBehaviour
 {
     [Header("할당 O")]
     public TrigData[] trigDatas; //생성할 트리그 데이터
+    public EnemyData[] enemyDatas; //생성할 적 데이터
     [SerializeField] GameObject trigs; //복제할 트리그모음 프리팹
     [SerializeField] Material goodTrig; //+,* 트리그에 색깔
     [SerializeField] Material badTrig;  //- 트리그에 색깔
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject enemys;
 
     [Header("할당 X")]
     public int waves = 0; //게임 웨이브
+    public int enemyWaves = 0;
     public bool gameStart = false;
 
     Quaternion targetRotation = Quaternion.Euler(40, 0, 0);
+
+    void Start(){
+        canvas.SetActive(true);
+    }
 
     void Update(){
         //게임시작되면 카메라 회전
@@ -28,22 +36,34 @@ public class GameManager : MonoBehaviour
             }
     }
     
-
     //canvas에 있는 Start버튼을 클릭했을 때 실행
     public void StartBtnClick(){
         Destroy(canvas);
         InvokeRepeating("CreatTrig",1f,10f); //1초가 지난뒤 10초마다 CreatTrig함수 실행
+        InvokeRepeating("CreatEnemy",1f,5f);
         gameStart = true; //게임 시작!
     }
 
+    //적 생성
+    void CreatEnemy(){
+        SetEnemyInfo();
+        enemyWaves++;
+    }
+
+    //적 데이터 설정
+    void SetEnemyInfo(){
+        Vector3 enemyPosition = enemyPrefab.transform.position;
+        enemyPosition.x = Random.Range(-3.5f,3.5f);
+
+        GameObject enemy = 
+        Instantiate(enemyPrefab, enemyPosition, enemyPrefab.transform.rotation);
+        enemy.transform.parent = enemys.transform;
+        enemy.GetComponent<EnemyController>().count = enemyDatas[enemyWaves].enemyCount;
+    }
+
+    //트리그 생성
     void CreatTrig(){
         waves++; //wave에 1더하기
-
-        //trigDatas에 길이가 웨이브값보다 작으면 실행
-        if(trigDatas.Length < waves){
-            SceneManager.LoadScene(1); //씬 인덱스 값이 1인 씬으로 이동
-        }
-
         SetTrigInfo(); //트리그에 색, 값등을 설정해주는 함수   
     }
 

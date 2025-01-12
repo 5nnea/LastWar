@@ -7,3 +7,8 @@ public class TrigData{
     public string sign2; //2번 트리그 연산기호(*,-,+)
     public int num2; //2번 트리그 값
 }
+
+[System.Serializable]
+public class EnemyData{
+    public int enemyCount;
+}

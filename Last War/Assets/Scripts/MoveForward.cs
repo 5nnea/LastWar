@@ -11,7 +11,7 @@ public class MoveForward : MonoBehaviour
 
         //트리그의 z값이 maxZ값보다 작으면 실행
         if(transform.position.z < maxZ){
-            Destroy(gameObject); //오브젝트 삭제제
+            Destroy(gameObject); //오브젝트 삭제
         }
     }
 }
