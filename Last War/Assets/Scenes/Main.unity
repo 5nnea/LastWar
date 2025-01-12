@@ -970,11 +970,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigDatas:
   - sign1: +
-    num1: 3
+    num1: 2
     sign2: +
     num2: 1
   - sign1: '*'
-    num1: 3
+    num1: 1
     sign2: '*'
     num2: 2
   - sign1: '-'
@@ -986,21 +986,25 @@ MonoBehaviour:
     sign2: '-'
     num2: 2
   - sign1: '-'
-    num1: 3
+    num1: 5
     sign2: '-'
     num2: 7
+  - sign1: +
+    num1: 2
+    sign2: +
+    num2: 1
   enemyDatas:
-  - enemyCount: 2
-  - enemyCount: 10
-  - enemyCount: 5
   - enemyCount: 3
-  - enemyCount: 8
   - enemyCount: 5
   - enemyCount: 15
-  - enemyCount: 6
-  - enemyCount: 7
-  - enemyCount: 1
-  - enemyCount: 11
+  - enemyCount: 20
+  - enemyCount: 18
+  - enemyCount: 27
+  - enemyCount: 44
+  - enemyCount: 20
+  - enemyCount: 70
+  - enemyCount: 88
+  - enemyCount: 60
   trigs: {fileID: 5207463771537254816, guid: 0c911b851fb93c845a3cf288f9e10510, type: 3}
   goodTrig: {fileID: 2100000, guid: 44b757b22c926e348800e57f4a828f6c, type: 2}
   badTrig: {fileID: 2100000, guid: 45409631d89d99643843f11a01b8b19f, type: 2}
@@ -1507,7 +1511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 8311185251513937397}
   bullet: {fileID: 4560901645110694475, guid: baab0c4566b27324091cff65f902b2bb, type: 3}
-  yeonsaSpeed: 1
 --- !u!54 &2697179522641079657
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1531,7 +1534,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0

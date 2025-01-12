@@ -31,6 +31,7 @@ public class BulletController : MonoBehaviour
     void DamageEnemy(EnemyController enemyController, Collider collider){
         Destroy(gameObject);
         enemyController.countText.text = (--enemyController.count).ToString();
+        enemyController.ChangeEnemyCount();
         if(enemyController.count <= 0){
             Destroy(enemyController.gameObject);
         }

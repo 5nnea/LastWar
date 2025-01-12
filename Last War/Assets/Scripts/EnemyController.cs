@@ -14,19 +14,23 @@ public class EnemyController : MonoBehaviour
     //public bool isBoss = false;
 
     private float childNomalPosition = 1.1f;
-    private int falseCount;
+
 
     void Start()
     {   
         countText = transform.GetChild(0).GetComponent<TMP_Text>();
         countText.text = count.ToString();
-        falseCount = count > 19 ? 20 : count;
         ChangeEnemyCount();
     }
 
-    void ChangeEnemyCount(){
-            Vector3 childPosition;
+    public void ChangeEnemyCount(){
+        
+            for(int i = 1; i < transform.childCount; i++){
+                Destroy(transform.GetChild(i).gameObject);
+            }
 
+            Vector3 childPosition;
+            int falseCount = count > 19 ? 20 : count;
             int rows = (falseCount / 3 == 0) ? 1 : falseCount/3 + 1;
             int lastRowCount = falseCount % 3;
 

@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
         Vector3 childPosition;
 
         int rows = (playerCount / 5 == 0) ? 1 : playerCount/5 + 1;
+        xRange = (playerCount /5 == 0) ? 4 -((playerCount-1)/2*0.8f) : 4;
         int lastRowCount = playerCount % 5;
         for(int i = 0; i< rows; i++){
             int InRow = (i+1 == rows) ? lastRowCount : 5;

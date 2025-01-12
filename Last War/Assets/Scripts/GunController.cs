@@ -7,7 +7,7 @@ public class GunController : MonoBehaviour
     [SerializeField] GameObject bullet; //생성할 총알 프리팹
     
     [Header("할당 X")]
-    private float yeonsaSpeed = 1f; //연사 속도
+    private float yeonsaSpeed = 0.5f; //연사 속도
 
     private GameObject bullets; //총알의 부모
 
